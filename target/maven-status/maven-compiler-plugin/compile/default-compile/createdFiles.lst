@@ -1,0 +1,15 @@
+org/learning/managers/HabitableBuildingsManagerImplementation.class
+org/learning/api/NonResidential.class
+org/learning/model/NonResidentialBuildingException.class
+org/learning/managers/NonResidentialBuildingsManagerImplementation.class
+org/learning/model/HabitableBuilding.class
+org/learning/model/NonResidentialBuilding.class
+org/learning/api/Habitable.class
+org/learning/Controller.class
+org/learning/model/NonResidentialTypes.class
+org/learning/api/Building.class
+org/learning/api/HabitableBuildingsManager.class
+org/learning/WebApp.class
+org/learning/api/NonResidentialBuildingManager.class
+org/learning/model/HabitableBuildingTypes.class
+org/learning/model/HabitableBuildingException.class
