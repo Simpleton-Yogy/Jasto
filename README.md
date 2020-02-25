@@ -1,6 +1,6 @@
 # Jasto
 
-[![LoC](https://tokei.rs/b1/github/satcom886/rugl?category=code)](https://github.com/Simpleton-Yogy/Jasto)
+[![LoC](https://tokei.rs/b1/github/Simpleton-Yogy/Jasto?category=code)](https://github.com/Simpleton-Yogy/Jasto)
 [![CodeFactor](https://www.codefactor.io/repository/github/simpleton-yogy/jasto/badge)](https://www.codefactor.io/repository/github/simpleton-yogy/jasto)
 ![GitHub issues](https://img.shields.io/github/issues-raw/Simpleton-Yogy/Jasto)
 ![GitHub repo size](https://img.shields.io/github/repo-size/Simpleton-Yogy/Jasto)
