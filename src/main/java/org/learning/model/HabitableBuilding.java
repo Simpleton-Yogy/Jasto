@@ -11,6 +11,16 @@ public class HabitableBuilding implements org.learning.api.Habitable {
     private boolean active;
     private int size;
 
+
+    public HabitableBuilding(int max_inhabitants, int current_inhabitants, HabitableBuildingTypes type,  int size, String coordinates, boolean active) {
+        this.max_inhabitants = max_inhabitants;
+        this.current_inhabitants = current_inhabitants;
+        this.coordinates = coordinates;
+        this.type = type;
+        this.active = active;
+        this.size = size;
+    }
+
     public HabitableBuilding BasicHabitableBuilding(int max_inhabitants, String coordinates, HabitableBuildingTypes type) {
         this.max_inhabitants = max_inhabitants;
         this.current_inhabitants = 0;

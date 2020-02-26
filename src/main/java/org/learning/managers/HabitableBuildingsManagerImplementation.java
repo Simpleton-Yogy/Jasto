@@ -1,9 +1,7 @@
 package org.learning.managers;
 
 import org.learning.api.Habitable;
-import org.learning.model.HabitableBuilding;
-import org.learning.model.HabitableBuildingException;
-import org.learning.model.HabitableBuildingTypes;
+import org.learning.model.*;
 
 import javax.sql.DataSource;
 import java.sql.*;
@@ -26,7 +24,7 @@ public class HabitableBuildingsManagerImplementation implements org.learning.api
                 statement.    setInt(2, building.getCurrentInhabitants());
                 statement.    setInt(3, building.getSize());
                 statement. setString(4, building.getCoordinates());
-                statement. setObject(5, building.getType());
+                statement. setString(5, building.getType().toString());
                 statement.setBoolean(6, building.getBuildingsState());
 
                 statement.executeUpdate();
@@ -60,15 +58,75 @@ public class HabitableBuildingsManagerImplementation implements org.learning.api
 
     @Override
     public HabitableBuilding SetToHabitableBuilding(ResultSet resultSet) throws SQLException {
-        HabitableBuilding building = new HabitableBuilding();
-        building.setCurrentInhabitants(resultSet.getInt("CurrentInhabitants"));
-        building.setMaxInhabitants(resultSet.getInt("MaxInhabitants"));
-        building.setBuildingsState(resultSet.getBoolean("Active"));
-        building.setCoordinates(resultSet.getString("Location"));
-        building.setSize(resultSet.getInt("Size"));
-        building.setType((HabitableBuildingTypes) resultSet.getObject("Type"));
-        return building;
+        String type = resultSet.getString("Type");
+        HabitableBuildingTypes TypeOfBuilding;
+
+        switch(type){
+            case "CASTLE":
+                TypeOfBuilding = HabitableBuildingTypes.CASTLE;
+                break;
+
+            case "HOTEL":
+                TypeOfBuilding = HabitableBuildingTypes.HOTEL;
+                break;
+
+            case "SINGLEFAMILYHOUSE":
+                TypeOfBuilding = HabitableBuildingTypes.SINGLEFAMILYHOUSE;
+                break;
+
+            case "PALACE":
+                TypeOfBuilding = HabitableBuildingTypes.PALACE;
+                break;
+
+            case "COTTAGE":
+                TypeOfBuilding = HabitableBuildingTypes.COTTAGE;
+                break;
+
+            case "HOUSEBOAT":
+                TypeOfBuilding = HabitableBuildingTypes.HOUSEBOAT;
+                break;
+
+            case "RESIDENCE":
+                TypeOfBuilding = HabitableBuildingTypes.RESIDENCE;
+                break;
+
+            case "FORT":
+                TypeOfBuilding = HabitableBuildingTypes.FORT;
+                break;
+
+            case "MULTIFAMILYHOUSE":
+                TypeOfBuilding = HabitableBuildingTypes.MULTIFAMILYHOUSE;
+                break;
+
+            case "UNDERGROUNDHOUSE":
+                TypeOfBuilding = HabitableBuildingTypes.UNDERGROUNDHOUSE;
+                break;
+
+            case "MANSION":
+                TypeOfBuilding = HabitableBuildingTypes.MANSION;
+                break;
+
+            case "TINYHOME":
+                TypeOfBuilding = HabitableBuildingTypes.TINYHOME;
+                break;
+
+            case "BUNGALOW":
+                TypeOfBuilding = HabitableBuildingTypes.BUNGALOW;
+                break;
+
+            default:
+                TypeOfBuilding = null;
+        }
+
+        return new HabitableBuilding(
+                resultSet.getInt("MaxInhabitants"),
+                resultSet.getInt("CurrentInhabitants"),
+                TypeOfBuilding,
+                resultSet.getInt("Size"),
+                resultSet.getString("Coordinates"),
+                resultSet.getBoolean("Active"));
     }
+
 
     @Override
     public HabitableBuilding selectFromDBbyLocation(Array location) throws HabitableBuildingException {

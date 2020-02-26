@@ -4,10 +4,7 @@ import com.fasterxml.jackson.databind.JsonSerializer;
 import org.learning.api.Habitable;
 import org.learning.api.NonResidential;
 import org.learning.api.NonResidentialBuildingManager;
-import org.learning.model.HabitableBuildingException;
-import org.learning.model.NonResidentialBuilding;
-import org.learning.model.NonResidentialBuildingException;
-import org.learning.model.NonResidentialTypes;
+import org.learning.model.*;
 import org.springframework.context.annotation.Bean;
 
 import javax.sql.DataSource;
@@ -89,7 +86,7 @@ public class NonResidentialBuildingsManagerImplementation implements NonResident
     public NonResidentialBuilding SetToNonResidentialBuilding(ResultSet resultSet) throws SQLException {
 
         String type = resultSet.getString("Type");
-        NonResidentialTypes TypeOfBuilding;
+         NonResidentialTypes TypeOfBuilding;
 
         switch(type){
             case "FACTORY":
@@ -132,10 +129,12 @@ public class NonResidentialBuildingsManagerImplementation implements NonResident
                 TypeOfBuilding = null;
         }
 
-        return new NonResidentialBuilding(resultSet.getInt("MaxEmployees"),
+        return new NonResidentialBuilding(
+                resultSet.getInt("MaxEmployees"),
                 resultSet.getInt("CurrentEmployees"),
                 TypeOfBuilding,
-                resultSet.getInt("Size"), resultSet.getString("Coordinates"),
+                resultSet.getInt("Size"),
+                resultSet.getString("Coordinates"),
                 resultSet.getBoolean("Active"));
     }
 
